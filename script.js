@@ -36,19 +36,22 @@ function generatePassword() {
   }
   var characterNumber = window.confirm("Do you want numbers?")
   if (characterNumber == true){
-    characterSet += "123456789"
+    characterSet += "1234567890"
   }
   var characterSpecial = window.confirm("Do you want special characters?")
   if (characterSpecial == true){
     characterSet += "!@#$%^&*()"
   }
   console.log(characterSet);
+
   for (let i = 0; i < characterLength; i++) {
     var randomIndex = Math.floor(Math.random() * characterSet.length)
     var randomCharacter = characterSet[randomIndex]
     console.log(randomCharacter)
   }
-  return "Taja"
+ 
+  writePassword();
 }
+  
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
