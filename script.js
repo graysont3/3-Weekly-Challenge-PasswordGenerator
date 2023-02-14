@@ -6,8 +6,6 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  //var length = 8-128
-  //charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()~_"
   var password = generatePassword();
 
   var passwordText = document.querySelector("#password");
@@ -15,8 +13,10 @@ function writePassword() {
   passwordText.value = password;
 
 }
+var finalPassword = "";
+
 function generatePassword() {
-  var characterLength = window.prompt("How many characters?")
+  var characterLength = window.prompt("How many characters? between 8 and 128")
   if (characterLength < 8 || characterLength > 128) {
     alert("not a valid character length")
     return "Error"
@@ -40,7 +40,7 @@ function generatePassword() {
   }
   var characterSpecial = window.confirm("Do you want special characters?")
   if (characterSpecial == true){
-    characterSet += "!@#$%^&*()"
+    characterSet += "!@#$%^&*()`~-_=+\|><,.;:{}[]?/"
   }
   console.log(characterSet);
 
@@ -48,9 +48,12 @@ function generatePassword() {
     var randomIndex = Math.floor(Math.random() * characterSet.length)
     var randomCharacter = characterSet[randomIndex]
     console.log(randomCharacter)
+    finalPassword+=randomCharacter
   }
- 
-  writePassword();
+
+console.log(finalPassword)
+return finalPassword;
+  
 }
   
 // Add event listener to generate button
